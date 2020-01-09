@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Accounts</h2>
+  <%= link_to "New", new_account_path %><br>
+  <%= will_paginate @account, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Supplier ID</th>
+        <th>Account Number</th>
+
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.supplier_id %></td>
+        <td><%= account.account_number %></td>
+
+        <td><%= link_to "Show",  account_path(account.id) %></td>
+        <td><%= link_to "Edit",  edit_account_path(account.id) %></td>
+        <td><%= link_to "Destroy", account, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

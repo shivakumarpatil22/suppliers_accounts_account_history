@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Account History</h2>
+  <%= link_to "New", new_account_history_path %><br>
+  <%= will_paginate @account_histories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Account ID</th>
+         <th>Credit Rating</th>
+
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @account_histories.each do |account_histories| %>
+      <tr>
+        <td><%= account_histories.account_id %></td>
+        <td><%= account_histories.credit_rating %></td>
+
+        <td><%= link_to "Show",  account_history_path(account_histories.id) %></td>
+        <td><%= link_to "Edit",  edit_account_history_path(account_histories.id) %></td>
+        <td><%= link_to "Destroy", account_histories, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

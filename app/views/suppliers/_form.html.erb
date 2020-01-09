@@ -1,0 +1,20 @@
+<h2 class="largeHeader">Suppliers</h2>
+
+<%= form_with(model: supplier, local: true) do |form|%>
+  <% if supplier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(supplier.errors.count, "error") %> prohibited this user from being saved:</h>
+      <ul>
+        <% supplier.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name%>
+  </div>
+
+  <%=form.submit "submit", class: "btn btn-primary"%>
+<% end %>
